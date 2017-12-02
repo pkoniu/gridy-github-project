@@ -19,7 +19,8 @@ const requestOptions = {
     url: `https://${login}:${password}@api.github.com/search/repositories?sort=stars&q=a&page=1&per_page=100`,
     headers: {
         'User-Agent': 'Gridy-Crawler'
-    }
+    },
+    json: true
 };
 
 MongoClient.connect(MONGO_URL)
@@ -31,7 +32,7 @@ MongoClient.connect(MONGO_URL)
         return new Promise((resolve, reject) => {
             return request(requestOptions, (error, response, body) => {
                 if (error) return reject(error);
-                return resolve(JSON.parse(body));
+                return resolve(body);
             });
         });
     }).then(body => {
@@ -53,11 +54,42 @@ MongoClient.connect(MONGO_URL)
         return db.collection('repos').insertMany(reposInfo);
     }).then(insertResult => {
         console.log(`Inserted ${insertResult.insertedCount} repositories details.`)
-        process.exit(0);
 
-        // const ownersInfo = _.chain(bodyAsJson.items).map(item => {
-        // }).uniq().value();
+        const ownersInfo = _.chain(githubResponse.items).map(item => {
+            return {
+                login: item.owner.login,
+                url: item.owner.url,
+                type: item.owner.type
+            };
+        }).uniq().value();
 
+        return Promise.all(ownersInfo.map(ownerInfo => {
+            return new Promise((resolve, reject) => {
+                console.log(`Requesting addition info for: ${ownerInfo.login}`);
+                const requestDetails = {
+                    url: ownerInfo.url,
+                    headers: {
+                        'User-Agent': 'Gridy-Crawler'
+                    },
+                    json: true
+                };
+                return request(requestDetails, (error, response, body) => {
+                    if (error) return reject({
+                        error,
+                        ownerInfo
+                    });
+                    return resolve(_.merge(ownerInfo, {
+                        public_repos: body.public_repos,
+                        public_gists: body.public_gists,
+                        followers: body.followers,
+                        following: body.following,
+                        created_at: body.created_at
+                    }));
+                });
+            });
+        }));
+    }).then(ownersWithAdditionalInfo => {
+        debugger;
     }).catch(error => {
         console.log(error);
     });
