@@ -1,13 +1,18 @@
 const GitHub = require('github-api');
 const cmdLineArgs = require('command-line-args');
-const cmdLineArgsConf = require('./cmdLineConf');
-const {login, password} = cmdLineArgs(cmdLineArgsConf);
-console.log(login, password);
-
 const request = require('request');
+const _ = require('lodash');
+const fs = require('fs');
+
+const cmdLineArgsConf = require('./cmdLineConf');
+
+const {login, password} = cmdLineArgs(cmdLineArgsConf);
 
 const requestOptions = {
-    url: `https://${login}:${password}@api.github.com/search/repositories?sort=stars`
+    url: `https://${login}:${password}@api.github.com/search/repositories?sort=stars&q=a&page=1&per_page=100`,
+    headers: {
+        'User-Agent': 'Gridy-Crawler'
+    }
 };
 
 new Promise((resolve, reject) => {
@@ -16,7 +21,12 @@ new Promise((resolve, reject) => {
         return resolve(body);
     });
 }).then(body => {
-    console.log(body);
+    const bodyAsJson = JSON.parse(body);
+    return _.map(bodyAsJson.items, item => {
+        return item.name;
+    });
+}).then(reposNames => {
+    console.log(reposNames.length);
 }).catch(error => {
     console.log(error);
 });
