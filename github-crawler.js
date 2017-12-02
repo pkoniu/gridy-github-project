@@ -23,9 +23,18 @@ new Promise((resolve, reject) => {
 }).then(body => {
     const bodyAsJson = JSON.parse(body);
     return _.map(bodyAsJson.items, item => {
-        return item.name;
+        return {
+            name: item.name,
+            stars: item.stargazers_count,
+            watchers: item.watchers_count,
+            score: item.score,
+            issues: item.open_issues_count,
+            size: item.size,
+            language: item.language
+        };
     });
 }).then(reposNames => {
+    debugger;
     console.log(reposNames.length);
 }).catch(error => {
     console.log(error);
