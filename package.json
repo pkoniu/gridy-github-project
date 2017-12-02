@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pkoniu/gridy-github-project#readme",
   "dependencies": {
+    "@google-cloud/bigtable": "^0.10.2",
     "command-line-args": "^4.0.7",
     "fs": "0.0.1-security",
     "github-api": "^3.0.0",
