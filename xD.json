@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gridy-github",
+  "private_key_id": "243b2eb42a8d9bf336c3c99004fd5ffce6665d0e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDA/kFe+Qf+vjPB\n5XUlhqtzJxtHNE9YwvqwcsZK6wSNmvfZ8xyBde7oaV3d91XmUZvGivLspm4Z7hr5\n2Cd+39DFlMtnv4GkYT9urSKHfceubueCNnMSNq1Su0vpSH7M48bmPejKj5NIjm+Q\n5OwNfD8l6jTQ/yxdiVoL4o0LSqdGgxWSf/MBRoiI05ZENWdQda3QxCd9UkFnnLAp\nRiU6SEBcvu5d/WUi6vBnSfTTZyJ0quJyCM+Dew5JMtxY3UCfpvtQneLz9EikH6OC\n/aTCFt7Z54t9XH9MrjaRM7OwUgvzgFFJWAv4u9JOnJxiFJsTU0bobai8qXI63c7v\nrQgW5d5LAgMBAAECggEAResXRdAU3G6OE74MjdbXQHW3hTlnUbH53nkGa9fvI1o0\nVwqjlidisWKS9jqILVP9ipWGYsP8+Xnw3fk4fdeaLCq28lRIJIRy1ab17n5cHE7j\noqIVWFDkxCdE3jQ8dABFa96b+t6/LjckJis5db1Ap3zNO7ZmnVCIhevCy4d1SK7N\nYszgoJqj7VIx34KU8uohk6tCt5JyN/q6A8mU8eVPieoMJt6c94YfPi6E1wSlQ2ys\nXQ38taXBOkuzbZdivWvtTd5bPgL3BQVJLBifpNLJ5sT4xeWmZBI41NJpAS96oG5D\nMhudInBlG31iQ071wnaqLYLDKvOoODV/4wZSIinkkQKBgQDvGiodSWPtyMgrKUdk\nfM51Ii505BvGjDk4bxO2F/EAzB11gTJ1lA64+UQ+U6jPUMbBV3l/KBf5sAdHjWjt\nkQjmse4vus/Cnu22plXGEO8wLQIblRs3F5Uh3iRTm7tTJuwegl5Fi20Nl+3LMCxq\n529vwRVGzQcyKQebXodUQGpIowKBgQDOoeMC6WpVvreTESJ4z2o7f44MiLQgU19k\nYO+nC4tt2abaCCk0pf9pcd0Cl+wq1frszXa+dQshy4uLjSK+SZPnua16T6oPTyr6\nvsUXned9D5CY94zfV+2sTnMO1KgEt5DT27Nzk5mfcOgNJZooPfTN+ej2qvQbN8Kv\nTAgX03amOQKBgB3sflzP9Iur1zFfpymyXPxX3MyQR9GfdwHTFPpzIJxi70TneHMy\npm0L9Th/q97WUymbUv9Q+z8qgp632evxfNWyawbaMGpBDasQQifZsrWqzFq7XH6W\nmvl0HcPA976+XkqrMjUt7+YFn6MQUl7GvDGWTp1fx4jFjcgqGnG25hZVAoGBAJK9\nWmZ99prP5rQVLgLXYVzBd9Ik3q46Jvs079wUEb9AGwKpWwHdhKWQS+CEnR3Kefji\n7JnSqsYkM4Q2BV9XByc/sBe1LVLT6PTKt1LPO06P2CMZYbxWSB3eVE1K7crzxXD+\ni9DfF/CnkNONSY2cehYwjKVnwBT4I1SzzOeGr7LZAoGAcNoxyWQN4VPHMDlz//JV\nUw930mis37inM+PGKf4ReK79LpFu8NdZQobzFTyWozOLikqvUn0FlXLm8dfOouVM\nrI+qLFtWYY2YvAAu8Oq3f/qxOJGLnVpsxsRn/VEaZDUtoSHwL5xd1hOoS/ofOFn9\nPvBzkIqxje96CF+ynfPRvYI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gridy-github-key@gridy-github.iam.gserviceaccount.com",
+  "client_id": "112104662275128509438",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gridy-github-key%40gridy-github.iam.gserviceaccount.com"
+}
