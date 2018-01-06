@@ -6,7 +6,7 @@ const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const MONGO_URL = 'mongodb://localhost:27017/bigtable';
 
-const cmdLineArgsConf = require('./cmdLineConf');
+const cmdLineArgsConf = require('./cmdLineConf').githubCrawler;
 
 let db, githubResponse;
 
