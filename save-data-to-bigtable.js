@@ -3,7 +3,7 @@ const request = require('request');
 const _ = require('lodash');
 const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
-const MONGO_URL = 'mongodb://localhost:27017/bigtable2';
+const MONGO_URL = 'mongodb://localhost:27017/bigtable';
 
 const cmdLineArgsConf = require('./cmdLineConf').saveToBigTable;
 
@@ -33,17 +33,8 @@ return MongoClient.connect(MONGO_URL)
 	})
 	.then((allReposData) => {
 		return allReposData.map(element => {
-			const _id = _.get(element, '_id', 'N/A');
-			const name = _.get(element, 'name', 'N/A');
-			const size = _.get(element, 'size', 0);
-			const language = _.get(element, 'language', 'N/A');
-			const issues = _.get(element, 'issues', 0);
-			const stars = _.get(element, 'stars', 0);
-			const watchers = _.get(element, 'watchers', 0);
-			const score = _.get(element, 'score', 0);
-
 			return {
-				key: _id.toString(),
+				key: element._id.toString(),
 				data: {
 					general: {
 						name: element.name || 'N/A',
@@ -70,37 +61,29 @@ return MongoClient.connect(MONGO_URL)
 	.then((allOwnersData) => {
 		return allOwnersData.map(element => {
 			return {
-				key: element._id,
+				key: element._id.toString(),
 				data: {
 					general: {
-						login: element.login,
-						url: element.url,
-						type: element.type,
-						public_repos: element.public_repos,
-						public_gists: element.public_gists,
-						followers: element.followers,
-						following: element.following,
-						created_at: element.created_at
+						login: element.login || 'N/A',
+						url: element.url || 'N/A',
+						type: element.type || 'N/A',
+						public_repos: element.public_repos || 'N/A',
+						public_gists: element.public_gists || 'N/A',
+						followers: element.followers || 'N/A',
+						following: element.following || 'N/A',
+						created_at: element.created_at || 'N/A'
 					}
 				}
 			}
 		});
 	})
 	.then((mOD) => {
-		debugger;
 		mappedOwnersData = mOD;
-
-		return new Promise((resolve, reject) => {
-			return tableOwners.insert(mappedOwnersData, function (err) {
-				if (!err) {
-					return resolve();
-				}
-				return reject(err);
-			});
-		})
+		return tableOwners.insert(mappedOwnersData);
 	})
 	.then(xd => {
-		console.log(xd);
+		console.log(`${mappedOwnersData.length} owners and ${mappedReposData.length} data inserted into ${instanceName} in ${projectId}`);
+		return db.close();
 	})
 	.catch(error => {
 		debugger;

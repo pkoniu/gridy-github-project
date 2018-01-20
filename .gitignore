@@ -3,3 +3,4 @@ node_modules/
 body.json
 gridy-github-bigtable-243b2eb42a8d.json
 bigtable-definition-file.json
+*.csv

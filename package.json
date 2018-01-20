@@ -7,6 +7,7 @@
     "command-line-args": "^4.0.7",
     "fs": "0.0.1-security",
     "github-api": "^3.0.0",
+    "json2csv": "^3.11.5",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.34",
     "request": "^2.83.0"
