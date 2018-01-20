@@ -20,5 +20,31 @@ module.exports = {
         name: 'name',
         alias: 'n',
         type: String
+    }],
+    saveToBigTable: [{
+        name: 'projectId',
+        alias: 'p',
+        type: String
+    }, {
+        name: 'keyFile',
+        alias: 'k',
+        type: String
+    }, {
+        name: 'instanceName',
+        alias: 'i',
+        type: String
+    }],
+    prepareBigTable: [{
+        name: 'projectId',
+        alias: 'p',
+        type: String
+    }, {
+        name: 'keyFile',
+        alias: 'k',
+        type: String
+    }, {
+        name: 'instanceName',
+        alias: 'i',
+        type: String
     }]
 };

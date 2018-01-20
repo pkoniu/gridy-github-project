@@ -10,3 +10,6 @@ STORAGE_TYPE=HDD
 
 gcloud projects create $PROJECT_NAME
 gcloud beta bigtable instances create $INSTANCE_NAME --cluster=$CLUSTER_NAME --cluster-zone=$CLUSTER_ZONE --instance-type=$INSTANCE_TYPE --description=$DESCRIPTION --cluster-storage-type=$STORAGE_TYPE --project=$PROJECT_NAME
+
+echo project = $1 > ~/.cbtrc
+echo instance = $INSTANCE_NAME > ~/.cbtrc

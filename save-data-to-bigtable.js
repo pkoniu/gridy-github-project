@@ -3,22 +3,28 @@ const request = require('request');
 const _ = require('lodash');
 const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
-const MONGO_URL = 'mongodb://localhost:27017/bigtable';
+const MONGO_URL = 'mongodb://localhost:27017/bigtable2';
+
+const cmdLineArgsConf = require('./cmdLineConf').saveToBigTable;
 
 let db, mappedReposData, mappedOwnersData;
 
 const Bigtable = require('@google-cloud/bigtable');
 
+const {
+	projectId,
+	keyFile,
+	instanceName
+} = cmdLineArgs(cmdLineArgsConf);
+
 const bigtable = new Bigtable({
-    projectId: 'gridy-github',
-    keyFilename: 'xD.json'
+	projectId,
+	keyFilename: keyFile
 });
-const instance = bigtable.instance('gridy-github');
+const instance = bigtable.instance(instanceName);
 
 const tableRepos = instance.table('repos');
 const tableOwners = instance.table('owners');
-
-const cmdLineArgsConf = require('./cmdLineConf');
 
 return MongoClient.connect(MONGO_URL)
 	.then((bigtableDB) => {
@@ -27,39 +33,38 @@ return MongoClient.connect(MONGO_URL)
 	})
 	.then((allReposData) => {
 		return allReposData.map(element => {
+			const _id = _.get(element, '_id', 'N/A');
+			const name = _.get(element, 'name', 'N/A');
+			const size = _.get(element, 'size', 0);
+			const language = _.get(element, 'language', 'N/A');
+			const issues = _.get(element, 'issues', 0);
+			const stars = _.get(element, 'stars', 0);
+			const watchers = _.get(element, 'watchers', 0);
+			const score = _.get(element, 'score', 0);
+
 			return {
-				key: element._id.toString(),
+				key: _id.toString(),
 				data: {
 					general: {
-						name: element.name,
-						size: element.size,
-						language: element.language
+						name: element.name || 'N/A',
+						size: element.size || 0,
+						language: element.language || 'N/A'
 					},
-					social:  {
-						issues: element.issues,
-						stars: element.stars,
-						watchers: element.watchers,
-						score: element.score
+					social: {
+						issues: element.issues || 0,
+						stars: element.stars || 0,
+						watchers: element.watchers || 0,
+						score: element.score || 0
 					}
 				}
-			}
+			};
 		});
 	})
 	.then((mRD) => {
 		mappedReposData = mRD;
-
-		console.log(mappedReposData);
-
-		return new Promise((resolve, reject) => {
-			return tableRepos.insert(mappedReposData, function(err) {
-				if(!err) {
-					return resolve('!!!!!!');
-				}
-				return reject(err);
-			});
-		})
+		return tableRepos.insert(mappedReposData);
 	})
-	.then(() => {
+	.then((response) => {
 		return db.collection('owners').find().toArray();
 	})
 	.then((allOwnersData) => {
@@ -82,13 +87,14 @@ return MongoClient.connect(MONGO_URL)
 		});
 	})
 	.then((mOD) => {
+		debugger;
 		mappedOwnersData = mOD;
 
 		return new Promise((resolve, reject) => {
-			return tableOwners.insert(mappedOwnersData, function(err) {
-  			if (!err) {
-    			return resolve();
-  			}
+			return tableOwners.insert(mappedOwnersData, function (err) {
+				if (!err) {
+					return resolve();
+				}
 				return reject(err);
 			});
 		})
@@ -97,6 +103,7 @@ return MongoClient.connect(MONGO_URL)
 		console.log(xd);
 	})
 	.catch(error => {
+		debugger;
 		console.log(error);
 		return db.close();
 	})

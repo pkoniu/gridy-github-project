@@ -1,10 +1,19 @@
+const cmdLineArgs = require('command-line-args');
 const Bigtable = require('@google-cloud/bigtable');
 
+const cmdLineArgsConf = require('./cmdLineConf').prepareBigTable;
+
+const {
+    projectId,
+    keyFile,
+    instanceName
+} = cmdLineArgs(cmdLineArgsConf);
+
 const bigtable = new Bigtable({
-    projectId: 'gridy-github',
-    keyFilename: 'xD.json'
+    projectId,
+    keyFilename: keyFile
 });
-const instance = bigtable.instance('gridy-github');
+const instance = bigtable.instance(instanceName);
 
 const tableRepos = instance.table('repos');
 const tableOwners = instance.table('owners');
