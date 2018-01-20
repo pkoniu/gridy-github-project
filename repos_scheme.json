@@ -1,0 +1,53 @@
+[{
+        "familyId": "general",
+        "type": "STRING",
+        "encoding": "TEXT",
+        "onlyReadLatest": false,
+        "columns": [{
+                "qualifierString": "language",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "size",
+                "type": "INTEGER",
+                "encoding": "BINARY",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "name",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            }
+        ]
+    },
+    {
+        "familyId": "social",
+        "type": "STRING",
+        "encoding": "TEXT",
+        "onlyReadLatest": false,
+        "columns": [{
+            "qualifierString": "issues",
+            "type": "INTEGER",
+            "encoding": "BINARY",
+            "onlyReadLatest": false
+        }, {
+            "qualifierString": "stars",
+            "type": "INTEGER",
+            "encoding": "BINARY",
+            "onlyReadLatest": false
+        }, {
+            "qualifierString": "watchers",
+            "type": "INTEGER",
+            "encoding": "BINARY",
+            "onlyReadLatest": false
+        }, {
+            "qualifierString": "score",
+            "type": "INTEGER",
+            "encoding": "BINARY",
+            "onlyReadLatest": false
+        }]
+    }
+]
