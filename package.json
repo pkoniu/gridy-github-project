@@ -1,0 +1,28 @@
+{
+  "name": "gridy-github-project",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/bigtable": "^0.11.1",
+    "command-line-args": "^4.0.7",
+    "fs": "0.0.1-security",
+    "github-api": "^3.0.0",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.34",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkoniu/gridy-github-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkoniu/gridy-github-project/issues"
+  },
+  "homepage": "https://github.com/pkoniu/gridy-github-project#readme"
+}
