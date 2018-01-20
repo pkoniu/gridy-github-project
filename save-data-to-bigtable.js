@@ -32,7 +32,7 @@ return MongoClient.connect(MONGO_URL)
 				data: {
 					general: {
 						name: element.name,
-						size: element.size
+						size: element.size,
 						language: element.language
 					},
 					social:  {
