@@ -1,0 +1,58 @@
+[
+    {
+        "familyId": "general",
+        "type": "STRING",
+        "encoding": "TEXT",
+        "onlyReadLatest": false,
+        "columns": [
+            {
+                "qualifierString": "created_at",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "followers",
+                "type": "INTEGER",
+                "encoding": "BINARY",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "following",
+                "type": "INTEGER",
+                "encoding": "BINARY",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "login",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "public_gists",
+                "type": "INTEGER",
+                "encoding": "BINARY",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "public_repos",
+                "type": "INTEGER",
+                "encoding": "BINARY",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "type",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            },
+            {
+                "qualifierString": "url",
+                "type": "STRING",
+                "encoding": "TEXT",
+                "onlyReadLatest": false
+            }
+        ]
+    }
+]

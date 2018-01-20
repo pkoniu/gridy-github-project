@@ -67,10 +67,10 @@ return MongoClient.connect(MONGO_URL)
 						login: element.login || 'N/A',
 						url: element.url || 'N/A',
 						type: element.type || 'N/A',
-						public_repos: element.public_repos || 'N/A',
-						public_gists: element.public_gists || 'N/A',
-						followers: element.followers || 'N/A',
-						following: element.following || 'N/A',
+						public_repos: element.public_repos || 0,
+						public_gists: element.public_gists || 0,
+						followers: element.followers || 0,
+						following: element.following || 0,
 						created_at: element.created_at || 'N/A'
 					}
 				}
