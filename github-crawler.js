@@ -84,10 +84,11 @@ function requestAdditionalDataForOwners(insertResult) {
         return new Promise((resolve, reject) => {
             console.log(`Requesting additional info for: ${ownerInfo.login}`);
             const requestDetails = {
-                url: ownerInfo.url,
+                url: [ownerInfo.url.slice(0, 8), `${login}:${password}@`, ownerInfo.url.slice(8)].join(''),
                 headers: {
                     'User-Agent': 'Gridy-Crawler'
                 },
+                method: 'GET',
                 json: true
             };
             return request(requestDetails, (error, response, body) => {
